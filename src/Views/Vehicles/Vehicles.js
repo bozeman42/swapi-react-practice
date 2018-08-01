@@ -13,10 +13,8 @@ class Vehicles extends Component {
       current: 'https://swapi.co/api/vehicles',
       toHome: false
     }
-  }
-
-  componentDidMount() {
-    this.updateVehicles(this.state.current);
+    this.changeVehicles = this.changeVehicles.bind(this);
+    this.updateVehicles(this.state.current); 
   }
 
   updateVehicles(url) {
@@ -27,8 +25,7 @@ class Vehicles extends Component {
         this.setState({
           ...this.state,
           next: data.next,
-          prev: data.prev,
-          current: url,
+          previous: data.previous,
           vehicles: data.results
         })
       })
@@ -43,22 +40,29 @@ class Vehicles extends Component {
     })
   }
 
-  // changeVehicles(attr) {
-  //   return function (e) {
-  //     if (attr === "Prev") {
-        
-  //     }
-  //   }
-  // }
+  changeVehicles = attr => {
+    return (e) => {
+      console.log(attr,this.state[attr]);
+      this.setState({
+        ...this.state,
+        current: this.state[attr]
+      })
+      this.updateVehicles(this.state[attr]);
+    }
+  }
+
+  handleClick(e){
+
+  }
 
   render() {
     console.log(this.state.vehicles);
     return (
       <div>
-        {/* <div className="vehicle-nav">
-          <button disabled={this.state.prev ? false : true} url={this.state.prev} onClick={this.changeVehicles("Prev")}>Prev</button>
-          <button disabled={this.state.next ? false : true} url={this.state.next} onClick={this.changeVehicles("Next")}>Next</button>
-        </div> */}
+        <div className="vehicle-nav">
+          <button disabled={this.state.previous ? false : true} url={this.state.previous} onClick={this.changeVehicles("previous")}>Prev</button>
+          <button disabled={this.state.next ? false : true} url={this.state.next} onClick={this.changeVehicles("next")}>Next</button>
+        </div>
         <ul className="vehicle-list">
           {this.renderVehicles()}
         </ul>

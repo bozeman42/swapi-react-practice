@@ -21,18 +21,18 @@ export default class Vehicle extends Component {
       return <p>Pilots unknown</p>;
     } else {
       return (
-      <div>
-        <h3>Piloted by:</h3>
-        <p>
-        <ul className="pilot-list">
-          {vehicle.pilots.map(pilot => {
-            return (
-              <li key={pilot.match(/\d+/)}><Pilot url={pilot} /></li>
-            );
-          })}
-        </ul>
-        </p>
-      </div>
+        <div>
+          <h3>Piloted by:</h3>
+          <div>
+            <ul className="pilot-list">
+              {vehicle.pilots.map(pilot => {
+                return (
+                  <li key={pilot.match(/\d+/)}><Pilot url={pilot} /></li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
       );
     }
   }
