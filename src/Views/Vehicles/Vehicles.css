@@ -1,0 +1,22 @@
+.vehicle-list {
+  text-align: left;
+  list-style-type: none;
+}
+
+.vehicle-info {
+  box-shadow: #333 2px 2px 2px;
+  width: 250px;
+  border: black solid 1px;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 4px;
+}
+
+.vehicle-info h2 {
+  margin: 0px;
+}
+
+.pilot-list {
+  list-style-type: none;
+  padding: 0;
+}
